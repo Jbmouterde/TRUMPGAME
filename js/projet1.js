@@ -58,7 +58,7 @@ function win(win){
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
     // var ctx2 = canvas.getContext("2d");
-    ctx.font = "50px Arial";
+    ctx.font = "50px Impact";
     ctx.textBaseline = "hanging"
     ctx.fillText("YOU WIN!",420,265);
     clearInterval(Pipe);

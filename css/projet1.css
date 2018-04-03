@@ -11,7 +11,7 @@ body{
 }
 
 header {
-  color : yellow;
+  color : deeppink;
 }
 canvas {
   border: 2px solid transparent;
@@ -26,7 +26,7 @@ canvas {
   position: relative;
   z-index : 1;
  width : 75%;
- color : black;
+ color : deeppink;
  border : solid #4169E1 10px;
  border-radius : 40px;
  box-shadow: 20px 20px 20px #778899;
@@ -40,49 +40,21 @@ canvas {
 }
 
 /* position des calques :  */
-.numero1 {
-  background-color:red; 
-  position:absolute;
-  top:25px;
-  left:25px;
-  width:50px;
-  height:50px;
-  z-index:1;
-  }
-  
-  numero2 {
-  background-color:green; 
-  position:absolute;
-  top:50px;
-  left:50px;
-  width:50px;
-  height:50px;
-  z-index:2;
-  }
-  
-  numero3 {
-  background-color:yellow; 
-  position:absolute;
-  top:75px;
-  left:75px;
-  width:50px;
-  height:50px;
-  z-index:3;
-  }
+
 
 
 .instructions {
   
   height : 610px;
   width : 25%;
-  color : black;
+  color : #FF358B;
   border : solid #4169E1 10px;
   /* border-right : solid #4169E1 250px; */
   border-radius : 40px;
   box-shadow: 20px 20px 20px #778899;
   /* background-image : url("http://img.over-blog-kiwi.com/0/90/38/87/20140316/ob_5af185_fond-ecran-tablette-01.jpg"); */
   /* background-position : cover; */
-  /* background-image: url(http://zoro.blaszczak.co/glamorous-background/); */
+  background-color : blue;
   float : left; 
 }
 
