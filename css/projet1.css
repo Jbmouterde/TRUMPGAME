@@ -1,5 +1,9 @@
+style {
+  font-family: 'Press Start 2P', cursive;
+}
+
 body{
-  /* background-image: url(../images/milky.jpg); */
+  background-image: url(../images/milky.jpg);
   /* background-color : rgba(146, 53, 53, 0.913) ; */
   text-align : center;
   background-repeat : no-repeat;

@@ -54,12 +54,16 @@ function collision (objA, objB) {
 }
 // WIN 
 function win(win){
-  if(hero.y === -10){
+  if(hero.y < -5 && hero.x < 465 ){
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
     // var ctx2 = canvas.getContext("2d");
-    ctx.font = "30px Arial";
-    ctx.fillText("YOU WIN",445,225);
+    ctx.font = "50px Arial";
+    ctx.textBaseline = "hanging"
+    ctx.fillText("YOU WIN!",420,265);
+    clearInterval(Pipe);
+    clearInterval(onePipe);
+
   }
 }
 //position
@@ -79,7 +83,10 @@ function pipeCollision () {
       hasCollided = true;
      // reset the game ?
 
-      updateStuff();  
+      updateStuff(); 
+      hero.x = 450;
+      hero.y = 530;
+     
       
 
     }
@@ -119,6 +126,55 @@ var hero = {
     ctx.drawImage(heroImage, this.x, this.y, this.width, this.height);
   }
 };
+// WIN IMAGE ; 
+var hero2Image = new Image();
+hero2Image.src = "./images/win .png";
+var hero2 = {
+  x: 450,
+  y: 0,
+  width: 62.95,
+  height: 40.95,
+  drawMe: function () {
+    ctx.drawImage(hero2Image, this.x, this.y, this.width, this.height);
+  }
+};
+// Bonus 
+var bonusImage = new Image();
+bonusImage.src = "./images/mexique .png";
+var bonus = {
+  x: Math.floor(Math.random() * 1000),
+  y: 100,
+  width: 62.95,
+  height: 40.95,
+  drawMe: function () {
+    ctx.drawImage(bonusImage, this.x, this.y, this.width, this.height);
+  }
+};
+var bonus2Image = new Image();
+bonus2Image.src = "./images/mexique .png";
+var bonus2 = {
+  x: Math.floor(Math.random() * 1000),
+  y: 245,
+  width: 62.95,
+  height: 40.95,
+  drawMe: function () {
+    ctx.drawImage(bonus2Image, this.x, this.y, this.width, this.height);
+  }
+};
+
+var bonus3Image = new Image();
+bonus3Image.src = "./images/mexique .png";
+var bonus3 = {
+  x: Math.floor(Math.random() * 1000),
+  y: 380,
+  width: 62.95,
+  height: 31.95,
+  drawMe: function () {
+    ctx.drawImage(bonus3Image, this.x, this.y, this.width, this.height);
+  }
+};
+
+
 
 var pipeImage = new Image();
 pipeImage.src = "./images/catennemy.png";
@@ -129,18 +185,18 @@ pipeImage2.src = "./images/milky.jpg";
 // ligne obstacle
 var allPipes = [
   //ligne 1
-  new Pipe(pipeImage,100, 50, 30, 30),
-  new Pipe(pipeImage,300, 50, 30, 30),
-  new Pipe(pipeImage, 500, 50, 30, 30),
-  new Pipe(pipeImage, 700, 50, 30, 30),
-  new Pipe(pipeImage, 800, 50, 30, 30),
-  new Pipe(pipeImage, 1000, 50, 30, 30),
-  new Pipe(pipeImage, 10, 50, 30, 30),
+  new Pipe(pipeImage,100, 70, 30, 30),
+  new Pipe(pipeImage,300, 70, 30, 30),
+  new Pipe(pipeImage, 500, 70, 30, 30),
+  new Pipe(pipeImage, 700, 70, 30, 30),
+  new Pipe(pipeImage, 800, 70, 30, 30),
+  new Pipe(pipeImage, 1000, 70, 30, 30),
+  new Pipe(pipeImage, 10, 70, 30, 30),
  
   // ligne 2
-  new Pipe(pipeImage2,200, 150, 30, 30),
-  new Pipe(pipeImage2,500, 150, 30, 30),
-  new Pipe(pipeImage2,10, 150, 30, 30),
+  new Pipe(pipeImage2,200, 170, 30, 30),
+  new Pipe(pipeImage2,500, 170, 30, 30),
+  new Pipe(pipeImage2,10, 170, 30, 30),
 
   // ligne 3
   new Pipe(pipeImage2,100, 350, 30, 30),
@@ -169,46 +225,20 @@ function updateStuff () {
  win(win);
 //  initial();
 //  life();
-//   var treeImage = new Image();
-// treeImage.src = "./images/tree.png";
-// var tree = {
-//   x: 840,
-//   y: 215,
-//   width: 30,
-//   height: 70,
-//   drawMe: function () {
-//     ctx.drawImage(treeImage, this.x, this.y, this.width, this.height);
-//   }
-// };
-// var treeImage2 = new Image();
-// treeImage2.src = "./images/tree.png";
-// var tree2 = {
-//   x: 470,
-//   y: 215,
-//   width: 30,
-//   height: 70,
-//   drawMe: function () {
-//     ctx.drawImage(treeImage2, this.x, this.y, this.width, this.height);
-//   }
-// };
-// var treeImage3 = new Image();
-// treeImage3.src = "./images/tree.png";
-// var tree3 = {
-//   x: 150,
-//   y: 215,
-//   width: 30,
-//   height: 70,
-//   drawMe: function () {
-//     ctx.drawImage(treeImage3, 150, 215, 30, 70);
-//   }
-// };
+
 // midddle obstacle == useless ? ???? 
   // ctx.fillStyle = "green";
   // var middle1 = ctx.fillRect(840,215,30,70);
   // var middle2 = ctx.fillRect(470,215,30,70);
   // var middle3  = ctx.fillRect(150,215,30,70);
+  // win.drawMe();
 
   hero.drawMe();
+  hero2.drawMe();
+  bonus.drawMe();
+  bonus2.drawMe();
+  bonus3.drawMe();
+
   allPipes.forEach(function (onePipe) {
   // onePipe.src = "./images/tree.png"
     
@@ -221,8 +251,8 @@ function updateStuff () {
 
 
   if (pipeCollision()) {
-    hero.drawMe()
-    return ;
+    
+    return hero.drawMe();
    
   }
   
