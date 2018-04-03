@@ -54,7 +54,7 @@ function collision (objA, objB) {
 }
 // WIN 
 function win(win){
-  if(hero.y < -5 && hero.x < 465 ){
+  if(hero.y < -5 && hero.x === 465 ){
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
     // var ctx2 = canvas.getContext("2d");
@@ -66,14 +66,20 @@ function win(win){
 
   }
 }
-//position
+// LOSE 
+// WIN 
+// function lose(lose){
+//   if(hasCollided === true ){
+//     // var canvas2 = document.querySelector(".win");
+//     // var ctx2 = canvas.getContext("2d");
+//     ctx.font = "50px Impact";
+//     ctx.textBaseline = "hanging"
+//     ctx.fillText("YOU LOSE!",420,265);
+//     clearInterval(Pipe);
+//     clearInterval(onePipe);
 
-
-
-   
-
-
-
+//   }
+// }
 // COLLISION WITH THE BLOCKS
 function pipeCollision () {
   var hasCollided = false;
@@ -82,18 +88,35 @@ function pipeCollision () {
     if (collision(hero, onePipe)){
       hasCollided = true;
      // reset the game ?
-
-      updateStuff(); 
-      hero.x = 450;
-      hero.y = 530;
-     
-      
-
-    }
+     ctx.font = "50px Impact";
+     ctx.textBaseline = "hanging"
+     ctx.fillText("YOU LOSE!",420,265);
+     clearInterval(Pipe);
+     clearInterval(onePipe);
+      // updateStuff(); 
+      // hero.x = 450;
+      // hero.y = 530;
+      $("body > div.instructions.cache1 > div.plus > h2 > div:nth-child(1)").hide ();
+      // $("body > div.instructions.cache1 > div.plus > h2 > div:nth-child(2)").hide ();
+         
+      }
   });
 
   return hasCollided;
 }
+
+// function collision with the bonus 
+// function bonusCollision () {
+//   var hasCollided2 = false;
+//     if (collision(hero, bonus)){
+//       hasCollided2 = true;
+//       updateStuff();
+//       hero.y = 100;
+      
+//      // reset the game ?    
+//   };
+//   return hasCollided2;
+// }
 
 // function life(){
 //   if (hasCollided = true){
@@ -223,6 +246,7 @@ function updateStuff () {
   // ctx.fillText("YOU WIN" + hero.y,40, 53 )
   //obstacle middle
  win(win);
+//  lose(lose);
 //  initial();
 //  life();
 
@@ -242,19 +266,22 @@ function updateStuff () {
   allPipes.forEach(function (onePipe) {
   // onePipe.src = "./images/tree.png"
     
-    onePipe.x -= Math.floor(Math.random()*2);
+    onePipe.x -= Math.floor(Math.random()*5);
     onePipe.drawMe();
     if (onePipe.x <= -onePipe.width) {
       onePipe.x = canvas.width;
     }
   });
-
+// if(bonusCollision()){
+//   return
+// }
 
   if (pipeCollision()) {
     
-    return hero.drawMe();
+    return;
    
   }
+  
   
   requestAnimationFrame(function () {
     updateStuff();
@@ -273,6 +300,8 @@ body.onkeydown = function () {
   if (pipeCollision()) {
     return;
   }
+  // if (hero.x === bonus3.y && hero.y === bonus3.y)
+  // alert("boloss")
 
 
   switch (event.keyCode) {
