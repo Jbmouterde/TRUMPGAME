@@ -23,13 +23,7 @@ function Pipe (pipeImage,myX, myY, myW, myH) {
 }
 
 Pipe.prototype.drawMe = function () {
-  // ctx.fillStyle = "deeppink";
-//   var ennemyImage = new Image();
-// ennemyImage.src = "./images/catennemy.png";
   ctx.drawImage(pipeImage,this.x, this.y, this.width, this.height);
-  // ctx.drawImage(pipeImage2,this.x, this.y, this.width, this.height);
- 
-  
 };
 
 
@@ -59,21 +53,16 @@ function win(win){
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
     // var ctx2 = canvas.getContext("2d");
-    ctx.font = "50px Impact";
-    ctx.textBaseline = "hanging"
-    ctx.fillText("YOU WIN!",420,265);
-    clearInterval(Pipe);
-    clearInterval(onePipe);
+    // ctx.font = "50px Impact";
+    // ctx.textBaseline = "hanging"
+    // ctx.fillText("YOU WIN!",420,265);
+    // clearInterval(Pipe);
+    // clearInterval(onePipe);
    
 
   }
 }
-// bonus 
-function points(){
-  if (hero.y === bonus.y && hero.x === bonus.x){
-    clearRect(bonus3);
-  }
-}
+
 // LOSE 
 // WIN 
 // function lose(lose){
@@ -105,7 +94,6 @@ function pipeCollision () {
       hero.x = 450;
       hero.y = 530;
       $("body > div.instructions.cache1 > div.plus > h2 > div:nth-child(1)").hide ();
-      // $("body > div.instructions.cache1 > div.plus > h2 > div:nth-child(2)").hide ();
          
       }
   });
@@ -113,17 +101,9 @@ function pipeCollision () {
   return hasCollided;
 }
 
-// function collision with the bonus 
-// function bonusCollision () {
-//   var hasCollided2 = false;
-//     if (collision(hero, bonus)){
-//       hasCollided2 = true;
-//       updateStuff();
-//       hero.y = 100;
-      
-//      // reset the game ?    
-//   };
-//   return hasCollided2;
+// FONCTION POUR FAIRE DISPARAITRE
+// function clearBonus() {
+//   ctx.clearRect();
 // }
 
 // function life(){
@@ -171,7 +151,7 @@ var hero2 = {
 };
 // Bonus 
 var bonusImage = new Image();
-bonusImage.src = "./images/mexique .png";
+bonusImage.src = "./images/dollar.png";
 var bonus = {
   x: Math.floor(Math.random() * 1000),
   y: 100,
@@ -179,11 +159,14 @@ var bonus = {
   height: 40.95,
   drawMe: function () {
     ctx.drawImage(bonusImage, this.x, this.y, this.width, this.height);
-  }
+  },
+  clearMe: function() {
+    ctx.clearRect(this.x, this.y, this.width, this.height);
+   }
 };
 var score = 0; 
 var bonus2Image = new Image();
-bonus2Image.src = "./images/mexique .png";
+bonus2Image.src = "./images/dollar.png";
 var bonus2 = {
   x: Math.floor(Math.random() * 1000),
   y: 245,
@@ -191,11 +174,14 @@ var bonus2 = {
   height: 40.95,
   drawMe: function () {
     ctx.drawImage(bonus2Image, this.x, this.y, this.width, this.height);
-  }
+  },
+  clearMe: function() {
+    ctx.clearRect(this.x, this.y, this.width, this.height);
+   }
 };
 
 var bonus3Image = new Image();
-bonus3Image.src = "./images/mexique .png";
+bonus3Image.src = "./images/dollar.png";
 var bonus3 = {
   x: Math.floor(Math.random() * 1000),
   y: 380,
@@ -203,7 +189,10 @@ var bonus3 = {
   height: 31.95,
   drawMe: function () {
     ctx.drawImage(bonus3Image, this.x, this.y, this.width, this.height);
-  }
+  },
+  clearMe: function() {
+     ctx.clearRect(this.x, this.y, this.width, this.height);
+    }
 };
 
 
@@ -213,6 +202,7 @@ pipeImage.src = "./images/catennemy.png";
 
 var pipeImage2 = new Image();
 pipeImage2.src = "./images/milky.jpg";
+
 ///////////////////////
 // ligne obstacle
 var allPipes = [
@@ -255,18 +245,11 @@ function updateStuff () {
   // ctx.fillText("YOU WIN" + hero.y,40, 53 )
   //obstacle middle
  win(win);
- points();
-//  bonus(bonus);
-//  lose(lose);
-//  initial();
-//  life();
 
-// midddle obstacle == useless ? ???? 
-  // ctx.fillStyle = "green";
-  // var middle1 = ctx.fillRect(840,215,30,70);
-  // var middle2 = ctx.fillRect(470,215,30,70);
-  // var middle3  = ctx.fillRect(150,215,30,70);
-  // win.drawMe();
+//  if bonus3Collision();
+
+
+
 
   hero.drawMe();
   hero2.drawMe();
@@ -275,7 +258,6 @@ function updateStuff () {
   bonus3.drawMe();
 
   allPipes.forEach(function (onePipe) {
-  // onePipe.src = "./images/tree.png"
     
     onePipe.x -= Math.floor(Math.random()*3.5);
     onePipe.drawMe();
@@ -288,9 +270,25 @@ function updateStuff () {
 // }
 
   if (pipeCollision()) {
-    
     return;
    
+  }
+ 
+  if (collision(hero,bonus3)){
+    score += 50;
+      $("#compteur").text(score + "PTS" )
+    bonus3.clearMe()
+    
+  }
+  if (collision(hero,bonus)){
+    score += 50;
+      $("#compteur").text(score + "PTS" )
+    bonus.clearMe()
+  }
+  if (collision(hero,bonus2)){
+    score += 50;
+      $("#compteur").text(score + "PTS" )
+    bonus2.clearMe()
   }
   
   
@@ -307,12 +305,22 @@ updateStuff();
 
 var body = document.querySelector("body");
 body.onkeydown = function () {
-  // stop celine from moving if she has collided
   if (pipeCollision()) {
     return;
   }
-  // if (hero.x === bonus3.y && hero.y === bonus3.y)
-  // alert("boloss")
+  if (collision(hero.x,bonus.x) && collision(hero.y, bonus.y)){
+    bonus.clearMe()
+  }
+  if (collision(hero.x,bonus2.x) && collision(hero.y, bonus2.y)){
+    bonus2.clearMe()
+  }
+  if (collision(hero.x,bonus3.x) && collision(hero.y, bonus3.y)){
+    bonus3.clearMe()
+    score += 50;
+      $("#compteur").text(score + "PTS" )
+      
+  }
+
 
   
   switch (event.keyCode) {
@@ -345,68 +353,68 @@ body.onkeydown = function () {
 };
 
 
-// chronometrer 
+// chronometrer //
 
-function Chronometer() {
-  this.currentTime = 10;
-  this.intervalId = 0;
-  this.seconds = ""; 
-  this.minutes = ""; 
-}
+// function Chronometer() {
+//   this.currentTime = 10;
+//   this.intervalId = 0;
+//   this.seconds = ""; 
+//   this.minutes = ""; 
+// }
 
-Chronometer.prototype.startClick = function () {
-  var that = this; 
-  function incrementTime(){
-    that.currentTime --;
-    that.setTime()
-    printTime()
+// Chronometer.prototype.startClick = function () {
+//   var that = this; 
+//   function incrementTime(){
+//     that.currentTime --;
+//     that.setTime()
+//     printTime()
 
-  }
- this.intervalId = setInterval(incrementTime,1000);
-};
+//   }
+//  this.intervalId = setInterval(incrementTime,1000);
+// };
 
-Chronometer.prototype.setMinutes = function () {
-  return Math.floor(this.currentTime / 60)
-};
+// Chronometer.prototype.setMinutes = function () {
+//   return Math.floor(this.currentTime / 60)
+// };
 
-Chronometer.prototype.setSeconds = function () {
-  return this.currentTime % 60;
-};
+// Chronometer.prototype.setSeconds = function () {
+//   return this.currentTime % 60;
+// };
 
-Chronometer.prototype.twoDigitsNumber = function (n) {
- if (n.toString().length === 2) return n.toString()
- else return "0" + n
+// Chronometer.prototype.twoDigitsNumber = function (n) {
+//  if (n.toString().length === 2) return n.toString()
+//  else return "0" + n
  
-};
-Chronometer.prototype.minTime = function () {
-if (this.currentTime <= 0){
-  location.reload();
-  return minTime
-}}
+// };
+// Chronometer.prototype.minTime = function () {
+// if (this.currentTime <= 0){
+//   location.reload();
+//   return minTime
+// }}
 
-Chronometer.prototype.setTime = function () {
-  this.minutes = this.twoDigitsNumber(this.setMinutes())
-  this.seconds = this.twoDigitsNumber(this.setSeconds())
+// Chronometer.prototype.setTime = function () {
+//   this.minutes = this.twoDigitsNumber(this.setMinutes())
+//   this.seconds = this.twoDigitsNumber(this.setSeconds())
 
-};
+// };
 
-var chronometer = new Chronometer();
-var btnLeft     = document.getElementById('btnLeft');
-var btnRight    = document.getElementById('btnRight');
-var minDec      = document.getElementById('minDec');
-var minUni      = document.getElementById('minUni');
-var secDec      = document.getElementById('secDec');
-var secUni      = document.getElementById('secUni');
+// var chronometer = new Chronometer();
+// var btnLeft     = document.getElementById('btnLeft');
+// var btnRight    = document.getElementById('btnRight');
+// var minDec      = document.getElementById('minDec');
+// var minUni      = document.getElementById('minUni');
+// var secDec      = document.getElementById('secDec');
+// var secUni      = document.getElementById('secUni');
 
-function printTime() {
-  minDec.innerText = chronometer.minutes[0];
-  minUni.innerText = chronometer.minutes[1];
-  secDec.innerText = chronometer.seconds[0];
-  secUni.innerText = chronometer.seconds[1];
-}
-// Start/Stop Button
-btnLeft.addEventListener('click', function () {
-  chronometer.startClick();
-});
+// function printTime() {
+//   minDec.innerText = chronometer.minutes[0];
+//   minUni.innerText = chronometer.minutes[1];
+//   secDec.innerText = chronometer.seconds[0];
+//   secUni.innerText = chronometer.seconds[1];
+// }
+// // Start/Stop Button
+// btnLeft.addEventListener('click', function () {
+//   chronometer.startClick();
+// });
 
 

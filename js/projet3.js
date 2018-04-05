@@ -164,7 +164,7 @@ var hero2 = {
 };
 // Bonus 
 var bonusImage = new Image();
-bonusImage.src = "./images/mexique .png";
+bonusImage.src = "./images/dollar.png";
 var bonus = {
   x: Math.floor(Math.random() * 1000),
   y: 100,
@@ -175,7 +175,7 @@ var bonus = {
   }
 };
 var bonus2Image = new Image();
-bonus2Image.src = "./images/mexique .png";
+bonus2Image.src = "./images/dollar.png";
 var bonus2 = {
   x: Math.floor(Math.random() * 1000),
   y: 245,
@@ -188,7 +188,7 @@ var bonus2 = {
 var score = 0; 
 
 var bonus3Image = new Image();
-bonus3Image.src = "./images/mexique .png";
+bonus3Image.src = "./images/dollar.png";
 var bonus3 = {
   x: Math.floor(Math.random() * 1000),
   y: 380,
@@ -268,12 +268,17 @@ function updateStuff () {
   allPipes.forEach(function (onePipe) {
   // onePipe.src = "./images/tree.png"
     
-    onePipe.x -= Math.floor(Math.random()*7);
+    onePipe.x -= Math.floor(Math.random()*5);
+    onePipe.y += Math.floor(Math.random()*3);
+
     onePipe.drawMe();
     if (onePipe.x <= -onePipe.width) {
       onePipe.x = canvas.width;
     }
-  });
+    if (onePipe.y >= canvas.width) {
+      onePipe.y = 0;
+    }
+    });
 // if(bonusCollision()){
 //   return
 // }
