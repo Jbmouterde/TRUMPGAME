@@ -1,13 +1,14 @@
 
 // Button 
 $("body > header > button").click(function(){
-  $("body > div.instructions.cache1").slideToggle(1500);
+  location.reload();
+  // $("body > div.instructions.cache1").slideToggle(1500);
 });
 
-$("body > div.instructions.cache1 > button.btn-default.btn-lg.posititonBtn").click(function(){
-  location.reload();
+// $("body > div.instructions.cache1 > button.btn-default.btn-lg.posititonBtn").click(function(){
+//   location.reload();
   
-});
+// });
 
 // FONCTION CONSTRUCTOR ENNEMY
 function Pipe (pipeImage,myX, myY, myW, myH) {

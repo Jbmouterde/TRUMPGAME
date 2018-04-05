@@ -3,9 +3,10 @@ style {
 }
 
 body{
-  background-image: url(../images/desert.jpg);
+ 
   /* background-color : rgba(146, 53, 53, 0.913) ; */
   text-align : center;
+  background-image: url(../images/background.jpg);
   background-repeat : no-repeat;
   background-size: cover; 
 }
@@ -23,6 +24,7 @@ canvas {
 
 .border { 
   height : 610px;
+  background-image: url(../images/desert.jpg);
   position: relative;
   z-index : 1;
  width : 75%;
@@ -43,20 +45,20 @@ canvas {
 
 
 
-.instructions {
+/* .instructions {
   
   height : 610px;
   width : 25%;
   color : #FF358B;
   border : solid #4169E1 10px;
   /* border-right : solid #4169E1 250px; */
-  border-radius : 40px;
-  box-shadow: 20px 20px 20px #778899;
+  /* border-radius : 40px; */
+  /* box-shadow: 20px 20px 20px #778899; */
   /* background-image : url("http://img.over-blog-kiwi.com/0/90/38/87/20140316/ob_5af185_fond-ecran-tablette-01.jpg"); */
   /* background-position : cover; */
-  background-color : blue;
+  /* background-color : blue;
   float : left; 
-}
+} */ 
 
   /* hide  */
   /* .cache1 {

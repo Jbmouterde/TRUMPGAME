@@ -3,7 +3,7 @@ style {
 }
 
 body{
-  background-image: url(../images/milky.jpg);
+  background-image: url(../images/background.jpg);
   /* background-color : rgba(146, 53, 53, 0.913) ; */
   text-align : center;
   background-repeat : no-repeat;
@@ -19,6 +19,7 @@ canvas {
 
 .gameCanvas{
   z-index: 10;
+ 
 }
 
 .border { 
@@ -33,6 +34,7 @@ canvas {
  float : right; 
  /* background-image: url(../images/milky.jpg); */
  background-size : cover;
+ background-image: url(../images/milky.jpg);
 } 
 
 .hide3 {
@@ -43,20 +45,20 @@ canvas {
 
 
 
-.instructions {
+/* .instructions {
   
   height : 610px;
   width : 25%;
   color : #FF358B;
   border : solid #4169E1 10px;
   /* border-right : solid #4169E1 250px; */
-  border-radius : 40px;
-  box-shadow: 20px 20px 20px #778899;
+  /* border-radius : 40px; */
+  /* box-shadow: 20px 20px 20px #778899; */
   /* background-image : url("http://img.over-blog-kiwi.com/0/90/38/87/20140316/ob_5af185_fond-ecran-tablette-01.jpg"); */
   /* background-position : cover; */
-  background-color : blue;
-  float : left; 
-}
+  /* background-color : blue; */
+  /* float : left;  */
+/* } */ 
 
   /* hide  */
   /* .cache1 {

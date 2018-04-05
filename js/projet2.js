@@ -1,16 +1,16 @@
 
 // Button 
+// Button 
 $("body > header > button").click(function(){
-  console.log ("o")
-  $("body > div.instructions.cache1").slideToggle(1500);
+  window.location.href = "index1.html"
+  // $("body > div.instructions.cache1").slideToggle(1500);
 });
-
-$("body > div.instructions.cache1 > button.btn-default.btn-lg.posititonBtn").click(function(){
-  console.log ("o")
-  // $("body > div.border.cache2").slideToggle(1500);
-  window.location.href = "index.html"
-  ff  
-});
+// $("body > div.instructions.cache1 > button.btn-default.btn-lg.posititonBtn").click(function(){
+//   console.log ("o")
+//   // $("body > div.border.cache2").slideToggle(1500);
+//   window.location.href = "index.html"
+//   ff  
+// });
 
 // GAME 
 function Pipe (pipeImage,myX, myY, myW, myH) {
@@ -176,7 +176,6 @@ var score;
 //     ctx.drawImage(bonusImage, this.x, this.y, this.width, this.height);
 //   }
 // };
-
 var bonus2Image = new Image();
 bonus2Image.src = "./images/dollar.png";
 var bonus2 = {
@@ -216,28 +215,28 @@ pipeImage2.src = "./images/milky.jpg";
 // ligne obstacle
 var allPipes = [
   //ligne 1
-  new Pipe(pipeImage,100, 70, 30, 40),
-  new Pipe(pipeImage,300, 70, 30, 40),
-  new Pipe(pipeImage, 500, 70, 30, 40),
-  new Pipe(pipeImage, 700, 70, 30, 40),
-  new Pipe(pipeImage, 800, 70, 30, 40),
-  new Pipe(pipeImage, 1000, 70, 30, 40),
-  new Pipe(pipeImage, 10, 70, 30, 40),
+  new Pipe(pipeImage,100, 70, 20.25, 36),
+  new Pipe(pipeImage,300, 70, 20.25, 36),
+  new Pipe(pipeImage, 500, 70, 20.25, 36),
+  new Pipe(pipeImage, 700, 70, 20.25, 36),
+  new Pipe(pipeImage, 800, 70, 20.25, 36),
+  new Pipe(pipeImage, 1000, 70, 20.25, 36),
+  new Pipe(pipeImage, 10, 70, 20.25, 36),
  
   // ligne 2
-  new Pipe(pipeImage2,200, 170, 30, 40),
-  new Pipe(pipeImage2,500, 170, 30, 40),
-  new Pipe(pipeImage2,10, 170, 30, 40),
+  new Pipe(pipeImage2,200, 170, 20.25, 36),
+  new Pipe(pipeImage2,500, 170, 20.25, 36),
+  new Pipe(pipeImage2,10, 170, 20.25, 36),
 
   // ligne 3
-  new Pipe(pipeImage2,100, 350, 30, 40),
-  new Pipe(pipeImage2,500, 350, 30, 40),
-  new Pipe(pipeImage2,0, 350, 30, 40),
+  new Pipe(pipeImage2,100, 350, 20, 36),
+  new Pipe(pipeImage2,500, 350, 20, 36),
+  new Pipe(pipeImage2,0, 350, 20, 36),
 
   //ligne 4
-  new Pipe(pipeImage2,50, 450, 30, 40),
-  new Pipe(pipeImage2,400, 450, 30, 40),
-  new Pipe(pipeImage2,250, 450, 30, 40),
+  new Pipe(pipeImage2,50, 450, 20.25, 36),
+  new Pipe(pipeImage2,400, 450, 20.25, 36),
+  new Pipe(pipeImage2,250, 450, 20.25, 36),
 
   // middle section 
  
@@ -262,12 +261,14 @@ function createStuff () {
  
 // DRAW THE ENNEMIES
 allPipes.forEach(function (onePipe) {
-  onePipe.x -= Math.floor(Math.random()*3.5);
-  onePipe.drawMe();
-  if (onePipe.x <= -onePipe.width) {
-    onePipe.x = canvas.width;
-  }
-}); 
+  // onePipe.src = "./images/tree.png"
+    
+    onePipe.x += Math.floor(Math.random()*5);
+    onePipe.drawMe();
+    if (onePipe.x >= canvas.width) {
+      onePipe.x = 0;
+    }
+  });
 
   // 
   requestAnimationFrame(function () {
