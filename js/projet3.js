@@ -1,4 +1,3 @@
-
 // Button 
 $("body > header > button").click(function(){
   console.log ("o")
@@ -8,8 +7,8 @@ $("body > header > button").click(function(){
 $("body > div.instructions.cache1 > button.btn-default.btn-lg.posititonBtn").click(function(){
   console.log ("o")
   // $("body > div.border.cache2").slideToggle(1500);
-  location.reload();
-  
+  window.location.href = "index.html"
+  ff  
 });
 
 // GAME 
@@ -55,7 +54,7 @@ function collision (objA, objB) {
 // WIN 
 function win(win){
   if(hero.y < -5 && hero.x === 465 ){
-    window.location.href = "index3.html"
+    // window.location.href = "index4.html"
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
     // var ctx2 = canvas.getContext("2d");
@@ -66,12 +65,6 @@ function win(win){
     clearInterval(onePipe);
    
 
-  }
-}
-// bonus 
-function points(){
-  if (hero.y === bonus.y && hero.x === bonus.x){
-    clearRect(bonus3);
   }
 }
 // LOSE 
@@ -159,7 +152,7 @@ var hero = {
 };
 // WIN IMAGE ; 
 var hero2Image = new Image();
-hero2Image.src = "./images/win .png";
+hero2Image.src = "./images/soucoup.png";
 var hero2 = {
   x: 450,
   y: 0,
@@ -181,7 +174,6 @@ var bonus = {
     ctx.drawImage(bonusImage, this.x, this.y, this.width, this.height);
   }
 };
-var score = 0; 
 var bonus2Image = new Image();
 bonus2Image.src = "./images/mexique .png";
 var bonus2 = {
@@ -193,6 +185,7 @@ var bonus2 = {
     ctx.drawImage(bonus2Image, this.x, this.y, this.width, this.height);
   }
 };
+var score = 0; 
 
 var bonus3Image = new Image();
 bonus3Image.src = "./images/mexique .png";
@@ -209,7 +202,7 @@ var bonus3 = {
 
 
 var pipeImage = new Image();
-pipeImage.src = "./images/catennemy.png";
+pipeImage.src = "./images/mexique .png";
 
 var pipeImage2 = new Image();
 pipeImage2.src = "./images/milky.jpg";
@@ -217,28 +210,28 @@ pipeImage2.src = "./images/milky.jpg";
 // ligne obstacle
 var allPipes = [
   //ligne 1
-  new Pipe(pipeImage,100, 70, 30, 30),
-  new Pipe(pipeImage,300, 70, 30, 30),
-  new Pipe(pipeImage, 500, 70, 30, 30),
-  new Pipe(pipeImage, 700, 70, 30, 30),
-  new Pipe(pipeImage, 800, 70, 30, 30),
-  new Pipe(pipeImage, 1000, 70, 30, 30),
-  new Pipe(pipeImage, 10, 70, 30, 30),
+  new Pipe(pipeImage,100, 70, 62.95, 31.95),
+  new Pipe(pipeImage,300, 70, 62.95, 31.95),
+  new Pipe(pipeImage, 500, 70, 62.95, 31.95),
+  new Pipe(pipeImage, 700, 70, 62.95, 31.95),
+  new Pipe(pipeImage, 800, 70, 62.95, 31.95),
+  new Pipe(pipeImage, 1000, 70, 62.95, 31.95),
+  new Pipe(pipeImage, 10, 70, 62.95, 31.95),
  
   // ligne 2
-  new Pipe(pipeImage2,200, 170, 30, 30),
-  new Pipe(pipeImage2,500, 170, 30, 30),
-  new Pipe(pipeImage2,10, 170, 30, 30),
+  new Pipe(pipeImage2,200, 170, 62.95, 31.95),
+  new Pipe(pipeImage2,500, 170, 62.95, 31.95),
+  new Pipe(pipeImage2,10, 170, 62.95, 31.95),
 
   // ligne 3
-  new Pipe(pipeImage2,100, 350, 30, 30),
-  new Pipe(pipeImage2,500, 350, 30, 30),
-  new Pipe(pipeImage2,0, 350, 30, 30),
+  new Pipe(pipeImage2,100, 350, 62.95, 31.95),
+  new Pipe(pipeImage2,500, 350, 62.95, 31.95),
+  new Pipe(pipeImage2,0, 350, 62.95, 31.95),
 
   //ligne 4
-  new Pipe(pipeImage2,50, 450, 30, 30),
-  new Pipe(pipeImage2,400, 450, 30, 30),
-  new Pipe(pipeImage2,250, 450, 30, 30),
+  new Pipe(pipeImage2,50, 450, 62.95, 31.95),
+  new Pipe(pipeImage2,400, 450, 62.95, 31.95),
+  new Pipe(pipeImage2,250, 450, 62.95, 31.95),
 
   // middle section 
  
@@ -255,8 +248,6 @@ function updateStuff () {
   // ctx.fillText("YOU WIN" + hero.y,40, 53 )
   //obstacle middle
  win(win);
- points();
-//  bonus(bonus);
 //  lose(lose);
 //  initial();
 //  life();
@@ -277,7 +268,7 @@ function updateStuff () {
   allPipes.forEach(function (onePipe) {
   // onePipe.src = "./images/tree.png"
     
-    onePipe.x -= Math.floor(Math.random()*3.5);
+    onePipe.x -= Math.floor(Math.random()*7);
     onePipe.drawMe();
     if (onePipe.x <= -onePipe.width) {
       onePipe.x = canvas.width;
@@ -314,14 +305,12 @@ body.onkeydown = function () {
   // if (hero.x === bonus3.y && hero.y === bonus3.y)
   // alert("boloss")
 
-  
+
   switch (event.keyCode) {
     case 38: // up arrow
       hero.y -= 15;
       score += 1;
       $("#compteur").text(score + "PTS" )
-      
-      
       break;
 
     case 37: // left arrow
