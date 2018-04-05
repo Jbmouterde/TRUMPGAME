@@ -326,10 +326,6 @@ body.onkeydown = function () {
   switch (event.keyCode) {
     case 38: // up arrow
       hero.y -= 15;
-      score += 1;
-      $("#compteur").text(score + "PTS" )
-      
-      
       break;
 
     case 37: // left arrow

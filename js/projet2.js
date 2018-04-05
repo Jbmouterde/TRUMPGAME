@@ -312,8 +312,6 @@ body.onkeydown = function () {
     case 38: // up arrow
       hero.y -= 15;
       score1= score;
-      score1 = +1
-      $("#compteur").text(score + "PTS" )
       break;
 
     case 37: // left arrow
