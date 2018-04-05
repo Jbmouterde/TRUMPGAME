@@ -165,41 +165,45 @@ var hero2 = {
 };
 var score;
 // Bonus 
-var bonusImage = new Image();
-bonusImage.src = "./images/dollar.png";
-var bonus = {
-  x: Math.floor(Math.random() * 1000),
-  y: 100,
-  width: 62.95,
-  height: 40.95,
-  drawMe: function () {
-    ctx.drawImage(bonusImage, this.x, this.y, this.width, this.height);
-  }
-};
+// var bonusImage = new Image();
+// bonusImage.src = "./images/dollar.png";
+// var bonus = {
+//   x: Math.floor(Math.random() * 1000),
+//   y: 100,
+//   width: 62.95,
+//   height: 40.95,
+//   drawMe: function () {
+//     ctx.drawImage(bonusImage, this.x, this.y, this.width, this.height);
+//   }
+// };
+
 var bonus2Image = new Image();
 bonus2Image.src = "./images/dollar.png";
 var bonus2 = {
   x: Math.floor(Math.random() * 1000),
-  y: 245,
+  y: 110,
   width: 62.95,
   height: 40.95,
   drawMe: function () {
     ctx.drawImage(bonus2Image, this.x, this.y, this.width, this.height);
-  }
+  },
+  clearMe: function() {
+    ctx.clearRect(bonus2Image);
+   }
 };
 // var score1 = 0; 
 
-var bonus3Image = new Image();
-bonus3Image.src = "./images/dollar.png";
-var bonus3 = {
-  x: Math.floor(Math.random() * 1000),
-  y: 380,
-  width: 62.95,
-  height: 31.95,
-  drawMe: function () {
-    ctx.drawImage(bonus3Image, this.x, this.y, this.width, this.height);
-  }
-};
+// var bonus3Image = new Image();
+// bonus3Image.src = "./images/dollar.png";
+// var bonus3 = {
+//   x: Math.floor(Math.random() * 1000),
+//   y: 380,
+//   width: 62.95,
+//   height: 31.95,
+//   drawMe: function () {
+//     ctx.drawImage(bonus3Image, this.x, this.y, this.width, this.height);
+//   }
+// };
 
 
 
@@ -242,58 +246,99 @@ var allPipes = [
 ];
 
 
-function updateStuff () {
+function createStuff () {
   // clear old drawings from the entire canvas before drawing again
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillText("Position_x: " + hero.x, 580,40);
-  ctx.fillText("Position_y: " + hero.y, 580,60);
-  // ctx.fillText("YOU WIN" + hero.y,40, 53 )
-  //obstacle middle
+// CALL FONCTION WIN
  win(win);
-//  lose(lose);
-//  initial();
-//  life();
-
-// midddle obstacle == useless ? ???? 
-  // ctx.fillStyle = "green";
-  // var middle1 = ctx.fillRect(840,215,30,70);
-  // var middle2 = ctx.fillRect(470,215,30,70);
-  // var middle3  = ctx.fillRect(150,215,30,70);
-  // win.drawMe();
-
+  // DRAW BONUS
+  // bonus.drawMe();
+  // bonus2.drawMe();
+  // bonus3.drawMe();
+// DRAW HERO
   hero.drawMe();
   hero2.drawMe();
-  bonus.drawMe();
-  bonus2.drawMe();
-  bonus3.drawMe();
+  
+ 
+// DRAW THE ENNEMIES
+allPipes.forEach(function (onePipe) {
+  onePipe.x -= Math.floor(Math.random()*3.5);
+  onePipe.drawMe();
+  if (onePipe.x <= -onePipe.width) {
+    onePipe.x = canvas.width;
+  }
+}); 
 
-  allPipes.forEach(function (onePipe) {
-  // onePipe.src = "./images/tree.png"
-    
-    onePipe.x += Math.floor(Math.random()*5);
-    onePipe.drawMe();
-    if (onePipe.x >= canvas.width) {
-      onePipe.x = 0;
-    }
+  // 
+  requestAnimationFrame(function () {
+    createStuff();
   });
-// if(bonusCollision()){
-//   return
+}
+
+
+function updateStuff () {
+//   // clear old drawings from the entire canvas before drawing again
+//  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// // CALL FONCTION WIN
+//  win(win);
+// // DRAW HERO
+//   hero.drawMe();
+  
+//   // DRAW BONUS
+//   bonus.drawMe();
+//   bonus2.drawMe();
+//   bonus3.drawMe();
+// // DRAW THE ENNEMIES
+//   allPipes.forEach(function (onePipe) {
+    
+//     onePipe.x -= Math.floor(Math.random()*3.5);
+//     onePipe.drawMe();
+//     if (onePipe.x <= -onePipe.width) {
+//       onePipe.x = canvas.width;
+//     }
+//   });
+
+  // COLLISION ENNEMY
+
+  // pipeCollision()
+ // COLLISION BONUS 
+//  if (collision(hero,bonus3) === true){
+//   bonus3.clearMe()
+// }
+//  if (collision(hero,bonus3) === false){
+//   bonus3.drawMe()
+// }
+ 
+if (collision(hero,bonus2) === true){
+  bonus2.clearMe()
+  score += 50;
+  $("#compteur").text(score + "PTS" )
+}
+ if (collision(hero,bonus2) === false){
+  bonus2.drawMe()
+}
+// if (collision(hero,bonus3) === true){
+//   bonus3.clearMe()
+//   score += 50;
+//   $("#compteur").text(score + "PTS" )
+// }
+//  if (collision(hero,bonus3) === false){
+//   bonus3.drawMe()
+// }
+// if (collision(hero,bonus) === true){
+//   bonus.clearMe()
+// }
+//  if (collision(hero,bonus) === false){
+//   bonus.drawMe()
 // }
 
-  if (pipeCollision()) {
-    
-    return;
-   
-  }
-  
-  
   requestAnimationFrame(function () {
-    updateStuff();
+    updateStuff()
   });
-
 }
 
 // start the drawing loop
+createStuff();
 updateStuff();
 
 // -----------------------------------------------------------------------------
