@@ -53,15 +53,15 @@ function collision (objA, objB) {
 // WIN 
 function win(win){
   if(hero.y < 5 && hero.x === 465 ){
-    // window.location.href = "index4.html"
+    window.location.href = "index5.html"
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
     // var ctx2 = canvas.getContext("2d");
-    ctx.font = "50px Impact";
-    ctx.textBaseline = "hanging"
-    ctx.fillText("YOU WIN!",420,265);
-    clearInterval(Pipe);
-    clearInterval(onePipe);
+    // ctx.font = "150px 'Press Start 2P', cursive";
+    // ctx.textBaseline = "hanging"
+    // ctx.fillText("YOU WIN!",120,265);
+    // clearInterval(Pipe);
+    // clearInterval(onePipe);
    
 
   }
@@ -220,13 +220,13 @@ pipeImage2.src = "./images/milky.jpg";
 // ligne obstacle
 var allPipes = [
   //ligne 1
-  new Pipe(pipeImage,100, 80, 41.1, 27.5),
+  // new Pipe(pipeImage,100, 80, 41.1, 27.5),
   new Pipe(pipeImage,300, 80, 41.1, 27.5),
-  new Pipe(pipeImage, 500, 80, 41.1, 27.5),
-  new Pipe(pipeImage, 700, 80, 41.1, 27.5),
+  // new Pipe(pipeImage, 500, 80, 41.1, 27.5),
+  // new Pipe(pipeImage, 700, 80, 41.1, 27.5),
   new Pipe(pipeImage, 800, 80, 41.1, 27.5),
   new Pipe(pipeImage, 1000, 80, 41.1, 27.5),
-  new Pipe(pipeImage, 10, 80, 41.1, 27.5),
+  // new Pipe(pipeImage, 10, 80, 41.1, 27.5),
  
   // ligne 2
   new Pipe(pipeImage2,200, 170, 41.1, 27.5),
@@ -243,10 +243,32 @@ var allPipes = [
   new Pipe(pipeImage2,400, 450, 41.1, 27.5),
   new Pipe(pipeImage2,250, 450, 41.1, 27.5),
 
-  // middle section 
- 
+  // ligne 5
+  new Pipe(pipeImage,100, 700, 41.1, 27.5),
+  // new Pipe(pipeImage,300, 700, 41.1, 27.5),
+  new Pipe(pipeImage, 500, 700, 41.1, 27.5),
+  // new Pipe(pipeImage, 700, 700, 41.1, 27.5),
+  new Pipe(pipeImage, 800, 700, 41.1, 27.5),
+  // new Pipe(pipeImage, 1000, 700, 41.1, 27.5),
+  new Pipe(pipeImage, 10, 700, 41.1, 27.5), 
 
+  //ligne 6 
+  new Pipe(pipeImage,100, 550, 41.1, 27.5),
+  // new Pipe(pipeImage,300, 550, 41.1, 27.5),
+  new Pipe(pipeImage, 500, 550, 41.1, 27.5),
+  new Pipe(pipeImage, 700, 550, 41.1, 27.5),
+  // new Pipe(pipeImage, 800, 550, 41.1, 27.5),
+  new Pipe(pipeImage, 1000, 550, 41.1, 27.5),
+  // new Pipe(pipeImage, 10, 550, 41.1, 27.5), 
 
+   //ligne 7 
+   new Pipe(pipeImage,100, 20, 41.1, 27.5),
+   // new Pipe(pipeImage,300, 20, 41.1, 27.5),
+   new Pipe(pipeImage, 500, 20, 41.1, 27.5),
+   new Pipe(pipeImage, 700, 20, 41.1, 27.5),
+   // new Pipe(pipeImage, 800, 20, 41.1, 27.5),
+   new Pipe(pipeImage, 1000, 20, 41.1, 27.5),
+   // new Pipe(pipeImage, 10, 20, 41.1, 27.5), 
 ];
 
 
