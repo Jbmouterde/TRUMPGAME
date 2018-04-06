@@ -3,7 +3,7 @@ style {
 }
 
 body{
-  background-image: url(./images/trum.png);
+  background-image: url(../images/trum.png);
   /* background-color : rgba(146, 53, 53, 0.913) ; */
   opacity: 0.9;
   text-align : center;

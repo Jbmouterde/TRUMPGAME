@@ -6,7 +6,7 @@ body{
  
   /* background-color : rgba(146, 53, 53, 0.913) ; */
   text-align : center;
-  background-image: url(./images/trum.png);
+  background-image: url(../images/trum.png);
   background-repeat : no-repeat;
   background-size: cover; 
   font-family: 'Permanent Marker', cursive;
