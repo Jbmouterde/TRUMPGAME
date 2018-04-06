@@ -57,10 +57,11 @@ function pipeCollision () {
   allPipes.forEach(function (onePipe) {
     if (collision(hero, onePipe)){
       hasCollided = true;
-      updateStuff(); 
-      hero.x = 450;
-      hero.y = 530;
-      $("body > div.instructions.cache1 > div.plus > h2 > div:nth-child(1)").hide ();    
+      window.location.href = "index6.html"
+      // updateStuff(); 
+      // hero.x = 450;
+      // hero.y = 530;
+      // $("body > div.instructions.cache1 > div.plus > h2 > div:nth-child(1)").hide ();    
       }
   });
   return hasCollided;
