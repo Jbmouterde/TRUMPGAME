@@ -11,7 +11,9 @@ body{
 }
 
 header {
-  color : deeppink;
+  color : dodgerblue;
+  text-shadow: 2px 2px 2px black;
+
 }
 canvas {
   border: 2px solid transparent;

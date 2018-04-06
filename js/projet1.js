@@ -46,7 +46,7 @@ function collision (objA, objB) {
 }
 // WIN 
 function win(win){
-  if(hero.y < -5 && hero.x === 465){
+  if(hero.y < 5 && hero.x === 465){
     window.location.href = "index3.html"
   }
 }
@@ -81,6 +81,18 @@ var hero = {
   width: 48.40,
   height: 62.95,
   drawMe: function () {
+    if (this.x <= 0) {
+      this.x = 0;
+    } else if (this.x >= innerWidth - this.width) {
+      this.x = innerWidth - this.width;
+    }
+
+    if (this.y <= 0) {
+      this.y = 0;
+    } else if (this.y >= innerHeight - this.height) {
+      this.y = innerHeight - this.height;
+    }
+   
     ctx.drawImage(heroImage, this.x, this.y, this.width, this.height);
   }
 };
@@ -89,7 +101,7 @@ var hero2Image = new Image();
 hero2Image.src = "./images/win .png";
 var hero2 = {
   x: 450,
-  y: 0,
+  y: 10,
   width: 62.95,
   height: 40.95,
   drawMe: function () {
@@ -153,13 +165,13 @@ pipeImage.src = "./images/catennemy.png";
 // ligne obstacle
 var allPipes = [
   //ligne 1
-  new Pipe(pipeImage,100, 70, 30, 30),
-  new Pipe(pipeImage,300, 70, 30, 30),
-  new Pipe(pipeImage, 500, 70, 30, 30),
-  new Pipe(pipeImage, 700, 70, 30, 30),
-  new Pipe(pipeImage, 800, 70, 30, 30),
-  new Pipe(pipeImage, 1000, 70, 30, 30),
-  new Pipe(pipeImage, 10, 70, 30, 30),
+  new Pipe(pipeImage,100, 80, 30, 30),
+  new Pipe(pipeImage,300, 80, 30, 30),
+  new Pipe(pipeImage, 500, 80, 30, 30),
+  new Pipe(pipeImage, 700, 80, 30, 30),
+  new Pipe(pipeImage, 800, 80, 30, 30),
+  new Pipe(pipeImage, 1000, 80, 30, 30),
+  new Pipe(pipeImage, 10, 80, 30, 30),
  
   // ligne 2
   new Pipe(pipeImage,200, 170, 30, 30),
@@ -188,7 +200,8 @@ function createStuff () {
   // bonus2.drawMe();
   // bonus3.drawMe();
 // DRAW HERO
-  hero.drawMe();
+  hero.drawMe()
+  
   hero2.drawMe();
   
  

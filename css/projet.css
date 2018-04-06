@@ -1,0 +1,68 @@
+style {
+  font-family: 'Press Start 2P', cursive;
+}
+
+body{
+  background-image: url(../images/background.jpg);
+  /* background-color : rgba(146, 53, 53, 0.913) ; */
+  opacity: 0.9;
+  text-align : center;
+  background-repeat : no-repeat;
+  background-size: cover; 
+  color : dodgerblue;
+  text-shadow: 2px 2px 2px black;
+  
+}
+
+header {
+  color : dodgerblue;
+  text-shadow: 2px 2px 2px black;
+
+}
+canvas {
+  border: 2px solid transparent;
+}
+
+.gameCanvas{
+  z-index: 10;
+ 
+}
+
+.border { 
+  height : 610px;
+  position: relative;
+  z-index : 1;
+ width : 75%;
+ color : deeppink;
+ border : solid #4169E1 10px;
+ border-radius : 40px;
+ box-shadow: 20px 20px 20px #778899;
+ float : right; 
+ /* background-image: url(../images/milky.jpg); */
+ background-size : cover;
+ background-image: url(../images/milky.jpg);
+} 
+
+.hide3 {
+  display: none;
+}
+
+/* position des calques :  */
+
+
+
+.instructions {
+  
+  height : 410px;
+  width : 50%;
+  background:rgba(255,255,255, 0.5);
+  border : solid #4169E1 10px;
+  margin-left:25%;
+  margin-top:25%;
+  margin-top : 200px;
+  border-radius : 40px; 
+  box-shadow: 20px 20px 20px #778899; 
+  font-size : 20px
+
+}
+

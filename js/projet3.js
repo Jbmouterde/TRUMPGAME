@@ -52,7 +52,7 @@ function collision (objA, objB) {
 }
 // WIN 
 function win(win){
-  if(hero.y < -5 && hero.x === 465 ){
+  if(hero.y < 5 && hero.x === 465 ){
     // window.location.href = "index4.html"
     console.log ("YOU WIN");
     // var canvas2 = document.querySelector(".win");
@@ -146,6 +146,17 @@ var hero = {
   width: 48.40,
   height: 62.95,
   drawMe: function () {
+    if (this.x <= 0) {
+      this.x = 0;
+    } else if (this.x >= innerWidth - this.width) {
+      this.x = innerWidth - this.width;
+    }
+
+    if (this.y <= 0) {
+      this.y = 0;
+    } else if (this.y >= innerHeight - this.height) {
+      this.y = innerHeight - this.height;
+    }
     ctx.drawImage(heroImage, this.x, this.y, this.width, this.height);
   }
 };
@@ -154,7 +165,7 @@ var hero2Image = new Image();
 hero2Image.src = "./images/soucoup.png";
 var hero2 = {
   x: 450,
-  y: 0,
+  y: 10,
   width: 62.95,
   height: 40.95,
   drawMe: function () {
@@ -209,13 +220,13 @@ pipeImage2.src = "./images/milky.jpg";
 // ligne obstacle
 var allPipes = [
   //ligne 1
-  new Pipe(pipeImage,100, 70, 41.1, 27.5),
-  new Pipe(pipeImage,300, 70, 41.1, 27.5),
-  new Pipe(pipeImage, 500, 70, 41.1, 27.5),
-  new Pipe(pipeImage, 700, 70, 41.1, 27.5),
-  new Pipe(pipeImage, 800, 70, 41.1, 27.5),
-  new Pipe(pipeImage, 1000, 70, 41.1, 27.5),
-  new Pipe(pipeImage, 10, 70, 41.1, 27.5),
+  new Pipe(pipeImage,100, 80, 41.1, 27.5),
+  new Pipe(pipeImage,300, 80, 41.1, 27.5),
+  new Pipe(pipeImage, 500, 80, 41.1, 27.5),
+  new Pipe(pipeImage, 700, 80, 41.1, 27.5),
+  new Pipe(pipeImage, 800, 80, 41.1, 27.5),
+  new Pipe(pipeImage, 1000, 80, 41.1, 27.5),
+  new Pipe(pipeImage, 10, 80, 41.1, 27.5),
  
   // ligne 2
   new Pipe(pipeImage2,200, 170, 41.1, 27.5),
